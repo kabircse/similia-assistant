@@ -6,17 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Privacy Policy for Similia Assistant, a digital homeopathy companion for doctors, students, and researchers."
+    content="Privacy policy for Similia Assistant, outlining what data we collect, why we collect it, storage practices, and user controls."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
   />
   <style>
     :root {
-      --bg: #020617;
-      --card: #020617;
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --card-bg: #020617;
       --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.16);
-      --border: rgba(148, 163, 184, 0.4);
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-border: rgba(34, 197, 94, 0.3);
       --text-main: #e5e7eb;
       --text-soft: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --danger-soft: rgba(248, 113, 113, 0.1);
+      --danger: #f97373;
+      --max-width: 960px;
     }
 
     * {
@@ -26,18 +37,12 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 65%);
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: #a5b4fc;
-      text-decoration: underline;
-      text-decoration-style: dotted;
     }
 
     .page {
@@ -47,104 +52,172 @@
     }
 
     .shell {
-      max-width: 840px;
+      max-width: var(--max-width);
       margin: 0 auto;
       padding: 2rem 1.25rem 3rem;
     }
 
     header {
-      margin-bottom: 1.75rem;
-    }
-
-    header h1 {
-      font-size: 1.6rem;
-      margin-bottom: 0.3rem;
-    }
-
-    header p {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .badge {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.78rem;
-      padding: 0.15rem 0.6rem;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 30% 0, #4ade80, #16a34a 40%, #0b1120);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #e5f9ec;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.4);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
       color: var(--text-soft);
-      margin-bottom: 0.7rem;
-      background: rgba(15, 23, 42, 0.9);
     }
 
-    .badge span {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-soft);
-    }
-
-    main {
-      border-radius: 1.2rem;
-      border: 1px solid var(--border);
-      background: radial-gradient(circle at top, #0b1120, #020617 55%);
-      padding: 1.5rem 1.4rem 1.6rem;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       font-size: 0.9rem;
     }
 
-    section {
-      margin-bottom: 1.1rem;
+    nav a {
+      color: var(--text-soft);
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.18s ease-out;
     }
 
-    section:last-of-type {
-      margin-bottom: 0;
+    nav a:hover {
+      color: #f9fafb;
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.5rem;
     }
 
     h2 {
       font-size: 1.05rem;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
     }
 
-    p {
-      margin-bottom: 0.45rem;
+    .hero {
+      margin-top: 2rem;
+      padding: 1.4rem 1.25rem;
+      border-radius: 1.25rem;
+      background: linear-gradient(180deg, rgba(34, 197, 94, 0.08), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      box-shadow: 0 35px 60px rgba(2, 6, 23, 0.7);
+    }
+
+    .hero p {
       color: var(--text-soft);
     }
 
-    ul {
-      margin: 0.3rem 0 0.6rem 1.2rem;
+    main {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      border-radius: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 1.25rem 1.35rem;
+      box-shadow: 0 25px 45px rgba(2, 6, 23, 0.55);
+    }
+
+    .card p {
+      font-size: 0.92rem;
       color: var(--text-soft);
+      margin-bottom: 0.55rem;
     }
 
-    li {
-      margin-bottom: 0.2rem;
+    .card ul {
+      list-style-position: inside;
+      padding-left: 0;
+      display: grid;
+      gap: 0.45rem;
+      color: var(--text-soft);
+      font-size: 0.9rem;
     }
 
-    strong {
+    .card li strong {
       color: #e5e7eb;
     }
 
-    .note {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      margin-top: 0.4rem;
+    .notice {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(248, 113, 113, 0.5);
+      background: rgba(248, 113, 113, 0.1);
+      color: #fecaca;
+      font-size: 0.85rem;
     }
 
     footer {
-      margin-top: 1.2rem;
+      margin-top: 2.5rem;
       font-size: 0.78rem;
-      color: var(--text-soft);
+      color: #6b7280;
+      border-top: 1px solid rgba(30, 64, 175, 0.5);
+      padding-top: 1rem;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      justify-content: space-between;
+      gap: 0.6rem;
     }
 
-    @media (max-width: 620px) {
-      main {
-        padding: 1.25rem 1.1rem 1.3rem;
+    footer a {
+      color: #c4ddff;
+      text-decoration: underline dotted;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -153,214 +226,78 @@
   <div class="page">
     <div class="shell">
       <header>
-        <div class="badge">
-          <span></span>
-          Similia Assistant &middot; Privacy Policy
+        <div class="brand">
+          <div class="brand-mark">Sa</div>
+          <div class="brand-text">
+            <div class="brand-title">Similia Assistant</div>
+            <div class="brand-sub">Privacy &amp; Data</div>
+          </div>
         </div>
-        <h1>Privacy Policy – Similia Assistant</h1>
-        <p>Last updated: 2025-01-01</p>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="#data">Data</a>
+          <a href="#storage">Storage</a>
+          <a href="#control">Control</a>
+        </nav>
       </header>
 
       <main>
-        <section id="intro">
-          <h2>1. Introduction</h2>
+        <section class="hero">
+          <h1>Privacy Policy Overview</h1>
           <p>
-            Similia Assistant (“we”, “our”, “the App”) is a digital homeopathy companion
-            designed for homeopathic doctors, students, and researchers. This Privacy Policy
-            describes how we collect, use, and protect information when you use the App and
-            related services.
-          </p>
-          <p>
-            By using Similia Assistant, you agree to the practices described in this policy.
-            If you do not agree, please do not use the App.
+            Similia Assistant collects only the data needed to keep the app secure, private, and
+            functional for homeopathic practice support. The sections below explain what is collected,
+            why it is collected, how it stays encrypted, and which controls you have on your device.
           </p>
         </section>
 
-        <section id="info-we-collect">
-          <h2>2. Information We Collect</h2>
-          <p>
-            The exact data collected may depend on which features of the App you use (e.g.,
-            offline only, or with online services / cloud sync). In general, we may collect
-            the following categories of information:
-          </p>
-
-          <p><strong>2.1 Device and technical information</strong></p>
+        <section id="data" class="card">
+          <h2>Data we collect</h2>
           <ul>
-            <li>Device type and model</li>
-            <li>Operating system version</li>
-            <li>App version and basic technical logs</li>
-            <li>Anonymous crash reports and performance metrics</li>
-          </ul>
-
-          <p><strong>2.2 Usage data</strong></p>
-          <ul>
-            <li>Screens or sections of the App that you access</li>
-            <li>Buttons or features you interact with</li>
-            <li>Approximate time spent in the App</li>
-          </ul>
-
-          <p><strong>2.3 Optional user data (if account / cloud features are enabled)</strong></p>
-          <p>
-            If the App includes login, sync, or cloud backup features, we may collect:
-          </p>
-          <ul>
-            <li>Name or display name</li>
-            <li>Email address</li>
-            <li>Encrypted authentication tokens</li>
-            <li>
-              Case records, notes, or preferences that you explicitly choose to store in the
-              cloud
-            </li>
-          </ul>
-
-          <p>
-            If you use the App completely offline without any account features, we may not
-            collect any personally identifiable information.
-          </p>
-        </section>
-
-        <section id="use-of-info">
-          <h2>3. How We Use Your Information</h2>
-          <p>We use the information described above to:</p>
-          <ul>
-            <li>Provide and maintain the core functionality of the App</li>
-            <li>Improve stability, performance, and user experience</li>
-            <li>Identify and fix bugs or crashes</li>
-            <li>
-              (If cloud features exist) synchronize your data securely across devices that you
-              authorize
-            </li>
-          </ul>
-          <p>
-            We do <strong>not</strong> sell your personal data to third parties. We also do not
-            use your data for unrelated advertising without your knowledge.
-          </p>
-        </section>
-
-        <section id="storage-security">
-          <h2>4. Data Storage and Security</h2>
-          <p>
-            Similia Assistant may store data in two main ways:
-          </p>
-          <ul>
-            <li>
-              <strong>Locally on your device:</strong> Case data, notes and preferences may be
-              saved on the device’s local storage or database.
-            </li>
-            <li>
-              <strong>In the cloud:</strong> If you use online features (such as sync or backup),
-              data may be stored on a secure backend service (for example, a provider such as
-              Supabase or another reputable cloud platform).
-            </li>
-          </ul>
-          <p>
-            We use reasonable technical and organizational measures to protect your data.
-            However, no system can be guaranteed to be completely secure, and you use the App
-            at your own risk.
-          </p>
-        </section>
-
-        <section id="third-parties">
-          <h2>5. Third-Party Services</h2>
-          <p>
-            The App may use third-party services for functionality such as:
-          </p>
-          <ul>
-            <li>Crash reporting and analytics</li>
-            <li>Authentication and backend data storage</li>
-            <li>Optional messaging or email delivery</li>
-          </ul>
-          <p>
-            These providers may process data according to their own privacy policies. We only
-            use reputable services and aim to minimize the personal data shared with them.
-          </p>
-        </section>
-
-        <section id="children">
-          <h2>6. Children’s Privacy</h2>
-          <p>
-            Similia Assistant is primarily intended for use by adult homeopathic practitioners
-            and students under appropriate supervision. It is not designed for unsupervised
-            use by children under 13 years of age.
-          </p>
-          <p>
-            If you believe that a child has provided personal information through the App,
-            please contact us so that we can take appropriate action.
-          </p>
-        </section>
-
-        <section id="medical-disclaimer">
-          <h2>7. Medical Disclaimer</h2>
-          <p>
-            Similia Assistant is an <strong>educational and decision-support tool</strong> for
-            trained homeopathic practitioners and students. It does not provide medical
-            diagnosis or emergency treatment.
-          </p>
-          <ul>
-            <li>
-              The App does not guarantee cure or clinical outcome for any patient or disease.
-            </li>
-            <li>
-              The final responsibility for prescription, diagnosis and treatment always lies with
-              the health professional.
-            </li>
-            <li>
-              In emergencies or serious conditions, users must seek immediate care from qualified
-              medical services.
-            </li>
+            <li><strong>FCM token:</strong> For Firebase Cloud Messaging to deliver announcements and reminders.</li>
+            <li><strong>Crash reports:</strong> Firebase Crashlytics receives anonymized traces to help debug stability issues.</li>
+            <li><strong>Device identifiers:</strong> Used to derive the SQLCipher encryption key so the bundled database stays tied to each install.</li>
+            <li><strong>Local preferences:</strong> Settings such as dark mode, font scale, and saved choices are stored only on the device.</li>
           </ul>
         </section>
 
-        <section id="your-rights">
-          <h2>8. Your Rights and Choices</h2>
-          <p>
-            Depending on your local laws and the features enabled in the App, you may have
-            rights such as:
-          </p>
+        <section class="card">
+          <h2>Why we collect it</h2>
           <ul>
-            <li>Accessing the personal data we hold about you (if any)</li>
-            <li>Requesting correction of inaccurate data</li>
-            <li>Requesting deletion of certain data</li>
-            <li>Withdrawing consent where processing is based on consent</li>
+            <li><strong>Messaging:</strong> Firebase Messaging needs the token to route notifications to your registered device.</li>
+            <li><strong>Stability:</strong> Crashlytics informs us of crashes so we can keep fixing bugs.</li>
+            <li><strong>Encryption:</strong> Device-bound keys ensure the embedded database cannot be restored on another device without the original install.</li>
+            <li><strong>Experience:</strong> Local preferences keep the app usable offline without syncing any profile information.</li>
           </ul>
+        </section>
+
+        <section id="storage" class="card">
+          <h2>Storage, sharing &amp; retention</h2>
           <p>
-            To exercise any of these rights, please contact us using the details in the
-            <a href="#contact">Contact</a> section below.
+            Data stays encrypted on the Android device by default (SQLCipher + AES). Only the FCM token and anonymized crash telemetry leave the device through Firebase.
+          </p>
+          <p>
+            Firebase (Google) is the only third party involved; we do not share or sell personal information. Uninstalling the app removes the encrypted database and all settings by design.
           </p>
         </section>
 
-        <section id="changes">
-          <h2>9. Changes to This Privacy Policy</h2>
-          <p>
-            We may update this Privacy Policy from time to time to reflect changes in the App,
-            legal requirements, or our data practices.
-          </p>
-          <p>
-            When we make significant changes, we will update the “Last updated” date at the top
-            of this page. In some cases, we may provide additional notice inside the App.
-          </p>
-        </section>
-
-        <section id="contact">
-          <h2>10. Contact</h2>
-          <p>
-            If you have any questions or concerns about this Privacy Policy or about how
-            Similia Assistant handles your data, you can contact:
-          </p>
-          <p>
-            Email:
-            <a href="mailto:kabir.cse10@gmail.com">kabir.cse10@gmail.com</a>
-          </p>
-          <p class="note">
-            Please do not send sensitive medical information by email unless it is strictly
-            necessary and you understand the associated risks.
-          </p>
+        <section id="control" class="card">
+          <h2>Your control</h2>
+          <ul>
+            <li>Disable or adjust notifications via Android's app settings if you want to stop FCM usage.</li>
+            <li>Reinstall the app to force a fresh database rebuild whenever you suspect corruption.</li>
+            <li>Contact <a href="mailto:kabir.cse10@gmail.com">kabir.cse10@gmail.com</a> with any data-handling questions.</li>
+            <li>Firebase's privacy guarantees apply; no personal data leaves the device beyond crash and notification telemetry.</li>
+          </ul>
+          <div class="notice">
+            This policy keeps personal and sensitive data explicit for Google Play and transparency to users.
+          </div>
         </section>
       </main>
 
       <footer>
-        <span>© 2025 Similia Assistant. All rights reserved.</span>
-        <span><a href="index.html">← Back to home</a></span>
+        <div>© 2025 Similia Assistant. All rights reserved.</div>
+        <div>See <a href="index.html" rel="noreferrer">app overview</a> for more context.</div>
       </footer>
     </div>
   </div>
