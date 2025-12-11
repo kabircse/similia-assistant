@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Similia Assistant – Digital Homeopathy Companion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Similia Assistant is a digital homeopathy companion for doctors, students, and researchers – repertory, materia medica, case analysis and more, with Bengali support."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --card-bg: #020617;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-border: rgba(34, 197, 94, 0.3);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --danger-soft: rgba(248, 113, 113, 0.1);
+      --danger: #f97373;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3.5rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 30% 0, #4ade80, #16a34a 40%, #0b1120);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #e5f9ec;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.4);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--text-soft);
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      transition: all 0.16s ease-out;
+    }
+
+    nav a:hover {
+      color: #f9fafb;
+      background: rgba(148, 163, 184, 0.12);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2.25rem;
+      align-items: center;
+      padding: 1.5rem 0 2.5rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-border);
+      background: linear-gradient(90deg, rgba(34, 197, 94, 0.1), transparent);
+      font-size: 0.78rem;
+      color: #bbf7d0;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-kicker span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title span {
+      color: #86efac;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub-bn {
+      font-size: 0.95rem;
+      color: #d1fae5;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 32px rgba(22, 163, 74, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.75);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-color: var(--border-subtle);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .hero-meta span {
+      color: #a7f3d0;
+      font-weight: 500;
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      padding: 1.2rem 1.2rem 1.1rem;
+      background: radial-gradient(circle at 10% 0, #1e293b, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      font-size: 0.75rem;
+      color: #e5e7eb;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: 0.25rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-list li::before {
+      content: "•";
+      color: #4ade80;
+      margin-right: 0.35rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.82rem;
+      color: #a5b4fc;
+      border-radius: 0.75rem;
+      border: 1px dashed rgba(129, 140, 248, 0.6);
+      padding: 0.4rem 0.65rem;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .card {
+      border-radius: 1.25rem;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.96));
+      padding: 1.1rem 1.15rem 1.2rem;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      margin-bottom: 0.8rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #e5e7eb;
+    }
+
+    .pill-soft {
+      border-color: var(--accent-border);
+      background: var(--accent-soft);
+      color: #bbf7d0;
+    }
+
+    .list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .list strong {
+      color: #e5e7eb;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.35);
+      color: #e5e7eb;
+      margin-bottom: 0.4rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .section {
+      margin-top: 2rem;
+    }
+
+    .section h2 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section p {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      max-width: 42rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.9rem;
+    }
+
+    .tile {
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      padding: 0.85rem 0.9rem;
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    .tile h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      color: #e5e7eb;
+    }
+
+    .tile small {
+      font-size: 0.74rem;
+      color: #9ca3af;
+    }
+
+    .danger-box {
+      border-radius: 0.9rem;
+      border: 1px solid rgba(248, 113, 113, 0.4);
+      background: var(--danger-soft);
+      padding: 0.75rem 0.85rem;
+      font-size: 0.8rem;
+      color: #fecaca;
+      margin-top: 0.7rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.5);
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+    }
+
+    footer a {
+      color: #c4ddff;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header>
+        <div class="brand">
+          <div class="brand-mark">Sa</div>
+          <div class="brand-text">
+            <div class="brand-title">Similia Assistant</div>
+            <div class="brand-sub">Digital Homeopathy Companion</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#features">Features</a>
+          <a href="#platforms">Platforms</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <div class="hero-kicker">
+              <span></span>
+              Built for homeopathic doctors, students & researchers
+            </div>
+            <h1 class="hero-title">
+              A smarter way to practice
+              <span>classical homeopathy</span>.
+            </h1>
+            <p class="hero-sub">
+              Similia Assistant brings repertory, materia medica, drug relationships, case analysis
+              and Bengali-friendly explanations into one focused digital workspace – inspired by
+              Hahnemann’s <em>“Similia Similibus Curentur”</em>.
+            </p>
+            <p class="hero-sub-bn">
+              হোমিওপ্যাথিক চিকিৎসক ও শিক্ষার্থীদের জন্য একটি পূর্ণাঙ্গ ডিজিটাল সঙ্গী – রোগ বিশ্লেষণ
+              থেকে রেমেডি নির্বাচন, সব এক জায়গায়।
+            </p>
+            <div class="hero-actions">
+              <a href="#platforms" class="btn btn-primary">
+                View app status
+              </a>
+              <a href="#features" class="btn btn-ghost">
+                Explore features
+              </a>
+            </div>
+            <div class="hero-meta">
+              <span>Note:</span> This site hosts the public information &amp; documentation for
+              Similia Assistant.
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-pill">
+              <span class="hero-pill-dot"></span>
+              Clinical focus – not a casual symptom checker
+            </div>
+            <div class="hero-card-title">
+              Designed around real homeopathic case-work
+            </div>
+            <ul class="hero-card-list">
+              <li>Mental → general → particular symptom analysis</li>
+              <li>Repertory + materia medica in one view</li>
+              <li>Remedy relationships &amp; causation support</li>
+              <li>Exportable case analysis for teaching &amp; discussion</li>
+            </ul>
+            <div class="hero-tagline">
+              “Similia — যেখানে হোমিওপ্যাথি সহজ হয়ে ওঠে।”  
+              <span style="opacity:0.85;">(Where homeopathy becomes simple.)</span>
+            </div>
+          </aside>
+        </section>
+
+        <section id="features" class="sections">
+          <div class="card">
+            <h2>Core clinical features</h2>
+            <p>
+              Similia Assistant is built to mirror the way classical homeopaths actually think
+              through cases – from disease evolution to repertorization and remedy selection.
+            </p>
+            <div class="pill-row">
+              <span class="pill pill-soft">Disease metamorphosis</span>
+              <span class="pill">Miasmatic view</span>
+              <span class="pill">Repertory search</span>
+              <span class="pill">Materia medica</span>
+              <span class="pill">Drug relationships</span>
+              <span class="pill">Case analysis</span>
+            </div>
+            <ul class="list">
+              <li>
+                <strong>Disease Metamorphosis:</strong>
+                Mental থেকে physical – রোগের স্বাভাবিক রূপান্তরকে ধাপে ধাপে visual ভাবে বোঝা।
+              </li>
+              <li>
+                <strong>Disease Nature &amp; Miasm:</strong>
+                Psora, Sycosis, Syphilis ইত্যাদির long-term প্রভাব মাথায় রেখে কেস প্ল্যান করা।
+              </li>
+              <li>
+                <strong>Repertory &amp; MM:</strong>
+                Rubric search, remedy grades, keynotes, modalities – সব এক জায়গায়।
+              </li>
+              <li>
+                <strong>Remedy Snapshot:</strong>
+                দ্রুত স্মরণের জন্য essence, core mental state, generals ও key physicals।
+              </li>
+              <li>
+                <strong>Diagnostic Test hints:</strong>
+                Common lab reports–কে case context-এ বুঝতে সাহায্যকারী নোট (not a lab substitute).
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Decision support for serious practice
+            </div>
+            <h2>How Similia helps</h2>
+            <p>
+              Similia Assistant is meant to support, not replace, a skilled homeopathic physician.
+              It focuses on clarity of thinking rather than automation of prescriptions.
+            </p>
+            <ul class="list">
+              <li>
+                Clear rubric selection and symptom hierarchy (mental &gt; general &gt; local).
+              </li>
+              <li>
+                Remedy ranking with space for your own clinical judgment.
+              </li>
+              <li>
+                Case notes, snapshots and exports for study, supervision or peer discussion.
+              </li>
+            </ul>
+            <div class="danger-box">
+              <strong>Important:</strong> Similia Assistant does not provide medical diagnosis or
+              emergency treatment. It is an educational and professional decision-support tool for
+              trained homeopaths and students under supervision.
+            </div>
+          </div>
+        </section>
+
+        <section id="platforms" class="section">
+          <h2>Platforms &amp; release status</h2>
+          <p>
+            Similia Assistant is being developed as a cross-platform application (Flutter) with an
+            initial focus on Android and Windows. Public release links will be published here.
+          </p>
+
+          <div class="grid-3">
+            <div class="tile">
+              <h3>Android (Google Play)</h3>
+              <small>Status: In development</small>
+              <p>
+                The Android app is prepared for Play Store publishing with proper bundle, privacy
+                policy and data safety declarations. The final release URL will appear here when
+                the app goes live.
+              </p>
+            </div>
+            <div class="tile">
+              <h3>Windows (Desktop)</h3>
+              <small>Status: Planned / testing</small>
+              <p>
+                A desktop build is planned for use in clinics and teaching setups. When stable
+                builds are available, download links will be added on this site.
+              </p>
+            </div>
+            <div class="tile">
+              <h3>Documentation site</h3>
+              <small>This GitHub Pages project</small>
+              <p>
+                This website is the public documentation and information hub for Similia Assistant –
+                app overview, feature explanations, links and legal documents (such as the privacy
+                policy).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="privacy" class="section">
+          <h2>Privacy, data &amp; medical disclaimer</h2>
+          <p>
+            Similia Assistant is designed with a conservative approach to data collection and
+            respect for patient confidentiality. Full details are provided in the privacy policy.
+          </p>
+          <p style="margin-top:0.5rem;">
+            ➤ Read the full privacy policy:
+            <a href="privacy-policy.html">Privacy Policy – Similia Assistant</a>
+          </p>
+          <div class="danger-box">
+            <strong>Medical disclaimer:</strong> Similia Assistant is an educational and
+            decision-support tool for professional homeopaths and students. It does not provide
+            diagnosis, does not guarantee cure, and must not be used as a substitute for emergency
+            or conventional medical care.
+          </div>
+        </section>
+
+        <section id="contact" class="section">
+          <h2>Contact &amp; feedback</h2>
+          <p>
+            For collaboration, feedback or questions about Similia Assistant, you can reach the
+            developer/maintainer:
+          </p>
+          <p style="margin-top:0.5rem;">
+            Email:
+            <a href="mailto:kabir.cse10@gmail.com">kabir.cse10@gmail.com</a>
+          </p>
+          <p style="margin-top:0.25rem;">
+            GitHub:
+            <a href="https://github.com/kabircse" target="_blank" rel="noreferrer">
+              github.com/kabircse
+            </a>
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <div>
+          © 2025 Similia Assistant. All rights reserved.
+        </div>
+        <div>
+          Site source on
+          <a
+            href="https://github.com/kabircse/similia-assistant"
+            target="_blank"
+            rel="noreferrer"
+          >GitHub</a>.
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
