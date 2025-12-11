@@ -16,16 +16,16 @@
   />
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #020617;
-      --card-bg: #020617;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.12);
-      --accent-border: rgba(34, 197, 94, 0.3);
-      --text-main: #e5e7eb;
-      --text-soft: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --danger-soft: rgba(248, 113, 113, 0.1);
+      --bg: #0e1513;
+      --bg-soft: #07100d;
+      --card-bg: #0a1513;
+      --accent: #82d5c8;
+      --accent-soft: rgba(130, 213, 200, 0.15);
+      --accent-border: rgba(130, 213, 200, 0.4);
+      --text-main: #dde4e1;
+      --text-soft: #bec9c6;
+      --border-subtle: rgba(137, 147, 144, 0.35);
+      --danger-soft: rgba(248, 113, 113, 0.2);
       --danger: #f97373;
       --max-width: 960px;
     }
@@ -39,7 +39,11 @@
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 65%);
+      background: radial-gradient(
+        circle at top,
+        rgba(130, 213, 200, 0.2) 0,
+        var(--bg) 65%
+      );
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -75,15 +79,15 @@
       width: 38px;
       height: 38px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at 30% 0, #4ade80, #16a34a 40%, #0b1120);
+      border: 1px solid rgba(130, 213, 200, 0.5);
+      background: radial-gradient(circle at 30% 0, #9decd6, #3d9b8e 40%, #04130f);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 0.9rem;
-      color: #e5f9ec;
-      box-shadow: 0 0 24px rgba(34, 197, 94, 0.4);
+      color: #dff7ef;
+      box-shadow: 0 0 24px rgba(130, 213, 200, 0.35);
     }
 
     .brand-text {
@@ -118,8 +122,9 @@
     }
 
     nav a:hover {
-      color: #f9fafb;
-      border-color: rgba(148, 163, 184, 0.4);
+      color: #f5fbf9;
+      border-color: rgba(130, 213, 200, 0.6);
+      background: rgba(130, 213, 200, 0.12);
     }
 
     h1 {
@@ -138,9 +143,13 @@
       margin-top: 2rem;
       padding: 1.4rem 1.25rem;
       border-radius: 1.25rem;
-      background: linear-gradient(180deg, rgba(34, 197, 94, 0.08), rgba(15, 23, 42, 0.9));
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      box-shadow: 0 35px 60px rgba(2, 6, 23, 0.7);
+      background: linear-gradient(
+        180deg,
+        rgba(130, 213, 200, 0.12),
+        rgba(6, 16, 11, 0.95)
+      );
+      border: 1px solid rgba(130, 213, 200, 0.3);
+      box-shadow: 0 35px 60px rgba(0, 0, 0, 0.35);
     }
 
     .hero p {
@@ -157,7 +166,11 @@
     .card {
       border-radius: 1.1rem;
       border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.95);
+      background: linear-gradient(
+        145deg,
+        rgba(9, 18, 15, 0.95),
+        rgba(11, 21, 18, 0.98)
+      );
       padding: 1.25rem 1.35rem;
       box-shadow: 0 25px 45px rgba(2, 6, 23, 0.55);
     }
@@ -178,7 +191,7 @@
     }
 
     .card li strong {
-      color: #e5e7eb;
+      color: var(--text-main);
     }
 
     .notice {
@@ -194,8 +207,8 @@
     footer {
       margin-top: 2.5rem;
       font-size: 0.78rem;
-      color: #6b7280;
-      border-top: 1px solid rgba(30, 64, 175, 0.5);
+      color: #9fb6b0;
+      border-top: 1px solid rgba(13, 129, 113, 0.5);
       padding-top: 1rem;
       display: flex;
       flex-wrap: wrap;
@@ -204,7 +217,7 @@
     }
 
     footer a {
-      color: #c4ddff;
+      color: #a9e0d9;
       text-decoration: underline dotted;
     }
 
